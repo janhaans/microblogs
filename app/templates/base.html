@@ -12,8 +12,17 @@
 </head>
 <body>
     <nav>
-        <a href="/index">Index</a>
+        <a href="{{ url_for('index') }}">Index</a>
+        <a href="{{ url_for('login') }}">Login</a>
     </nav>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <ul>{{ message }}</ul>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
 
     {% block content %}{% endblock %}
     
