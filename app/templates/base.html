@@ -13,7 +13,11 @@
 <body>
     <nav>
         <a href="{{ url_for('index') }}">Index</a>
-        <a href="{{ url_for('login') }}">Login</a>
+        {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+        {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
     </nav>
 
     {% with messages = get_flashed_messages() %}
